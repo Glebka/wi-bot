@@ -9,11 +9,19 @@
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <signal.h>
 
 #define PORT 777
 
+void sigPipeHandler()
+{
+    printf("Caught SIGPIPE\n");
+    exit(-1);
+}
+
 int open_port(char str[])
 {
+    printf("Opening serial port...\n");
     int fd = open(str, O_RDWR | O_NOCTTY | O_NONBLOCK); // ?? NDELAY or NONBLOCK?
 
     if (fd == -1)
@@ -47,20 +55,22 @@ int open_port(char str[])
     options.c_cflag |= CS8;
 
     tcsetattr(fd, TCSANOW, &options); //set the new options ... TCSANOW specifies all option changes to occur immediately
-
+    printf("Serial port ready.\n");
     return (fd);
 }
 
 int main()
 {
-
-
+    
+    signal(SIGPIPE, sigPipeHandler);
+    
     int sockfd, newsockfd;
     unsigned char command = 0;
     struct sockaddr_in serv_addr, cli_addr;
-
+    
     int writeport = open_port("/dev/ttyATH0");
 
+    printf("Opening socket...\n");
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
         error("ERROR opening socket\n");
@@ -74,25 +84,33 @@ int main()
     if (bind(sockfd, (struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
         error("ERROR on binding\n");
 
-    listen(sockfd, 5);
-
-    size_t clilen = sizeof(cli_addr);
-    newsockfd = accept(sockfd,(struct sockaddr *) &cli_addr,&clilen);
-
-    if (newsockfd < 0)
-        error("ERROR on accept\n");
-
-    while(command != 'X')
+    while( 1 )
     {
-        read(newsockfd,&command,1);
-        int n = write(writeport, &command, 1);
-        if (n < 0)
-        {
-            fputs("write() of bytes failed!\n", stderr);
-            exit(-1);
-        }
-    }
+        listen(sockfd, 5);
+        printf("Waiting for the client connection...\n");
+        size_t clilen = sizeof(cli_addr);
+        newsockfd = accept(sockfd,(struct sockaddr *) &cli_addr,&clilen);
 
+        if (newsockfd < 0)
+            error("ERROR on accept\n");
+    
+        printf("Client was connected.\n");
+    
+        while(command != 'X')
+        {
+            read(newsockfd,&command,1);
+            int n = write(writeport, &command, 1);
+            if (n < 0)
+            {
+                fputs("write() of bytes failed!\n", stderr);
+                exit(-1);
+            }
+        }
+        printf("Client was disconnected.\n");
+        close( newsockfd );
+        command = 0;
+    }
+    
     //closing ports
     close(writeport);
     exit(0);
