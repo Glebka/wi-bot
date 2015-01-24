@@ -31,58 +31,36 @@ void MainWindow::on_btnConnect_clicked()
     }
 }
 
-void MainWindow::on_btnDisconnect_clicked()
-{
-    mClient.disconnectFromHost();
-}
-
-void MainWindow::on_btnW_clicked()
-{
-    mClient.sendCommand(RoboCommand::CAM_UP);
-}
-
-void MainWindow::on_btnA_clicked()
-{
-    mClient.sendCommand(RoboCommand::CAM_LEFT);
-}
-
-void MainWindow::on_btnD_clicked()
-{
-    mClient.sendCommand(RoboCommand::CAM_RIGTH);
-}
-
-void MainWindow::on_btnS_clicked()
-{
-    mClient.sendCommand(RoboCommand::CAM_DOWN);
-}
-
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
-    switch (e->key())
+    if ( e->isAutoRepeat() )
     {
-    case Qt::Key_W:
-        mClient.sendCommand(RoboCommand::CAM_UP);
-        break;
-    case Qt::Key_S:
-        mClient.sendCommand(RoboCommand::CAM_DOWN);
-        break;
-    case Qt::Key_A:
-        mClient.sendCommand(RoboCommand::CAM_LEFT);
-        break;
-    case Qt::Key_D:
-        mClient.sendCommand(RoboCommand::CAM_RIGTH);
-        break;
-    default:
-        break;
+        e->ignore();
+        return;
     }
+    mCommandBuilder.appendFlag( e->key() );
+    mClient.sendCommand( mCommandBuilder.getCommand() );
+    e->accept();
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent *e)
 {
-    //qDebug() << e->key() << "released";
+    if ( e->isAutoRepeat() )
+    {
+        e->ignore();
+        return;
+    }
+    mCommandBuilder.removeFlag( e->key() );
+    mClient.sendCommand( mCommandBuilder.getCommand() );
+    e->accept();
 }
 
 void MainWindow::on_txtServerAddr_textEdited(const QString &arg1)
 {
     ui->btnConnect->setEnabled(ui->txtServerAddr->hasAcceptableInput());
+}
+
+void MainWindow::on_btnDisconnect_clicked()
+{
+    mClient.disconnectFromHost();
 }

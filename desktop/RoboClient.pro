@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    roboclient.cpp
+    roboclient.cpp \
+    CommandBuilder.cpp
 
 HEADERS  += mainwindow.h \
-    roboclient.h
+    roboclient.h \
+    CommandBuilder.hpp
 
 FORMS    += mainwindow.ui

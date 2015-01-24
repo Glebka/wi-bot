@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "roboclient.h"
+#include "CommandBuilder.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -18,24 +19,16 @@ public:
 
 private slots:
     void on_btnConnect_clicked();
+    void on_txtServerAddr_textEdited(const QString &arg1);
 
     void on_btnDisconnect_clicked();
-
-    void on_btnW_clicked();
-
-    void on_btnA_clicked();
-
-    void on_btnD_clicked();
-
-    void on_btnS_clicked();
-
-
-    void on_txtServerAddr_textEdited(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
     RoboClient mClient;
     QRegExp mAddressMatcher;
+    CommandBuilder mCommandBuilder;
+
     // QWidget interface
 protected:
     void keyPressEvent(QKeyEvent *e);

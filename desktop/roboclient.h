@@ -9,16 +9,14 @@ namespace RoboCommand
 {
     enum RoboCmd
     {
-        NONE,
-        CAM_UP,
-        CAM_DOWN,
-        CAM_LEFT,
-        CAM_RIGTH
-    };
-
-    enum RoboCmdCount
-    {
-        COMMANDS_COUNT = 5
+        NONE = 0,
+        EXIT = 1,
+        CAM_UP = 2,
+        CAM_DOWN = 4,
+        CAM_LEFT = 8,
+        CAM_RIGTH = 16,
+        WHEEL_LEFT = 32,
+        WHEEL_RIGHT = 64
     };
 }
 
@@ -29,7 +27,7 @@ public:
     explicit RoboClient(QObject *parent = 0);
 
     void connectToHost(const QString &address, quint16 port);
-    void sendCommand(RoboCommand::RoboCmd command);
+    void sendCommand(quint8 command);
 
 public slots:
     void disconnectFromHost();
@@ -40,8 +38,6 @@ signals:
 
 private:
     QTcpSocket mSocket;
-
-    static const char commandsMappings[RoboCommand::COMMANDS_COUNT];
 };
 
 #endif // ROBOCLIENT_H

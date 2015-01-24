@@ -2,15 +2,6 @@
 #include <QDebug>
 #include "roboclient.h"
 
-const char RoboClient::commandsMappings[] =
-{
-  '\0',
-  'W',
-  'S',
-  'A',
-  'D'
-};
-
 RoboClient::RoboClient(QObject *parent) :
     QObject(parent)
 {
@@ -29,15 +20,15 @@ void RoboClient::connectToHost(const QString &address, quint16 port)
 
 void RoboClient::disconnectFromHost()
 {
+    sendCommand( RoboCommand::EXIT );
     mSocket.disconnectFromHost();
 }
 
-void RoboClient::sendCommand(RoboCommand::RoboCmd command)
+void RoboClient::sendCommand(quint8 command)
 {
     if (mSocket.state() == QTcpSocket::ConnectedState)
     {
-        qDebug() << commandsMappings[command];
-        mSocket.write(&commandsMappings[command], 1);
+        mSocket.write( (const char *)&command, 1);
         mSocket.flush();
     }
 }
