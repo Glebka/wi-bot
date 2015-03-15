@@ -5,7 +5,8 @@ QT += qml quick
 SOURCES += main.cpp \
     RawCameraNode.cpp \
     CameraItem.cpp \
-    StreamClient.cpp
+    StreamClient.cpp \
+    RoboClient.cpp
 
 RESOURCES += qml.qrc
 
@@ -18,6 +19,7 @@ include(deployment.pri)
 HEADERS += \
     RawCameraNode.hpp \
     CameraItem.hpp \
-    StreamClient.hpp
+    StreamClient.hpp \
+    RoboClient.hpp
 
 LIBS += -ljpeg

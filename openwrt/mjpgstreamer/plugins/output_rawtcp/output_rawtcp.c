@@ -141,7 +141,12 @@ void *worker_thread(void *arg)
         listen(sockfd, 5);
         OPRINT("Waiting for the client connection...\n");
         size_t clilen = sizeof(cli_addr);
+        
+        pthread_mutex_lock(&pglobal->in[input_number].db);
+        
         newsockfd = accept(sockfd,(struct sockaddr *) &cli_addr,&clilen);
+        
+        pthread_mutex_unlock(&pglobal->in[input_number].db);
 
         if (newsockfd < 0)
         {

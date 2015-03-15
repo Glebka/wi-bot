@@ -31,6 +31,7 @@ public:
 
 public slots:
     void disconnectFromHost();
+    void bytesAvailable();
 
 signals:
     void connected();

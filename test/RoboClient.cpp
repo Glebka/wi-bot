@@ -1,6 +1,5 @@
 #include <QHostAddress>
-#include <QDebug>
-#include "roboclient.h"
+#include "RoboClient.hpp"
 
 RoboClient::RoboClient(QObject *parent) :
     QObject(parent)
@@ -39,3 +38,5 @@ void RoboClient::sendCommand(quint8 command)
         mSocket.flush();
     }
 }
+
+
