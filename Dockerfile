@@ -10,6 +10,7 @@ RUN su user
 RUN cd /opt && wget https://downloads.openwrt.org/chaos_calmer/15.05.1/ar71xx/generic/$OPENWRT_SDK_NAME.tar.bz2
 RUN cd /opt && tar xvfj $OPENWRT_SDK_NAME.tar.bz2 $OPENWRT_SDK_NAME/staging_dir/target-mips_34kc_uClibc-0.9.33.2 --strip-components=2
 RUN cd /opt && tar xvfj $OPENWRT_SDK_NAME.tar.bz2 $OPENWRT_SDK_NAME/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2 --strip-components=2
+RUN cd /opt && ls -al
 VOLUME /opt
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
