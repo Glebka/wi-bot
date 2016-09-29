@@ -1,0 +1,10 @@
+sudo: required
+language: cpp
+services:
+  - docker
+  
+before_install:
+  - docker build -t ar71xx-buildenv .
+
+script:
+  - docker run --rm -t -i ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make"
