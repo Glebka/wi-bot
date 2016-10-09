@@ -7,4 +7,4 @@ before_install:
   - docker pull glebka/ar71xx-buildenv
 
 script:
-  - docker run --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; STAGING_DIR=/opt; TOOLCHAIN_DIR=$STAGING_DIR/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2; cmake . && make"
+  - docker run --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; STAGING_DIR=/opt TOOLCHAIN_DIR=$STAGING_DIR/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2 cmake . && make"
