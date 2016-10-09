@@ -16,4 +16,4 @@ deploy:
   user: "glebka"
   key:
     secure: "gfzpFCFzdLIC0X5eJOAraOuwSAZqWWrRXawF7QW9D2RYTIhIOvmSBRJs2dzJofwR6umhn0A5zdMbS+xEXnDVvUXZOOaFwK7QBI+BgiCbCkxQ9E+W6Yokkg6lnXCOej98ezC2+LJrmTs1q6zzDACB7trmTGVEcOOPmrxjRiOaR+g="
-  dry-run: true
+  dry-run: false
