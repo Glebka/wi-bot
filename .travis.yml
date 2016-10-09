@@ -7,5 +7,5 @@ before_install:
   - sudo mkdir /wi-bot
   - docker pull glebka/ar71xx-buildenv
 script:
-  - docker run --rm -t -i glebka/ar71xx-buildenv -v /wi-bot:/wi-bot /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make"
+  - docker run -v /wi-bot:/wi-bot --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make"
   - cd /wi-bot/src/cmd-server && ls -al
