@@ -6,6 +6,14 @@ services:
 before_install:
   - sudo mkdir /wi-bot
   - docker pull glebka/ar71xx-buildenv
+
 script:
   - docker run -v /wi-bot:/wi-bot --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make"
-  - cd /wi-bot/src/cmd-server && ls -al
+
+deploy:
+  provider: bintray
+  file: "/wi-bot/deploy.json"
+  user: "glebka"
+  key:
+    secure: "gfzpFCFzdLIC0X5eJOAraOuwSAZqWWrRXawF7QW9D2RYTIhIOvmSBRJs2dzJofwR6umhn0A5zdMbS+xEXnDVvUXZOOaFwK7QBI+BgiCbCkxQ9E+W6Yokkg6lnXCOej98ezC2+LJrmTs1q6zzDACB7trmTGVEcOOPmrxjRiOaR+g="
+  dry-run: true

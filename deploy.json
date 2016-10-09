@@ -1,0 +1,19 @@
+{
+    "package": {
+        "name": "auto-upload",
+        "repo": "Wi-Bot",
+        "subject": "glebka",
+    },
+    "version": {
+        "name": "0.0.1",
+    },
+    "files":
+        [
+			{
+				"includePattern": "/wi-bot/src/cmd-server/(cmd-server)", 
+				"uploadPattern": "$1/$1",
+				"matrixParams": { "override": 1 }				
+			},
+        ],
+    "publish": true
+}
