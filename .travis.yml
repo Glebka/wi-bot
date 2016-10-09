@@ -7,4 +7,4 @@ before_install:
   - docker pull glebka/ar71xx-buildenv
 
 script:
-  - docker run --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make"
+  - docker run --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; cd /wi-bot; cmake . && make; ls -al"
