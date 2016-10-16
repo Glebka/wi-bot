@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 
 include(ExternalProject)
 
+set(EXECUTE_COMMAND chmod +x ${PROJECT_SOURCE_DIR}/thirdparty/patch.sh)
+
+execute_process(COMMAND ${EXECUTE_COMMAND})
+
 ExternalProject_Add(mjpg-streamer
 	SOURCE_DIR ${PROJECT_SOURCE_DIR}/thirdparty/mjpg-streamer
 	SVN_REPOSITORY svn://svn.code.sf.net/p/mjpg-streamer/code/
