@@ -28,7 +28,7 @@ set(sources
 	output_rawtcp.c
 )
 
-add_library(output_rawtcp 
+add_library(output_rawtcp SHARED
 	${sources}
 )
 

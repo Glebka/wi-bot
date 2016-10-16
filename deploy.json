@@ -11,7 +11,12 @@
 			{
 				"includePattern": "/wi-bot/src/cmd-server/(cmd-server)", 
 				"uploadPattern": "$1/$1",
-				"matrixParams": { "override": 1 }				
+				"matrixParams": { "override": 1 }
+			},
+			{
+				"includePattern": "/wi-bot/src/mjpgstreamer-(plugins)/output_rawtcp/(output_rawtcp.so)", 
+				"uploadPattern": "$1/$2",
+				"matrixParams": { "override": 1 }
 			}
 	],
     "publish": true
