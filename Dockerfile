@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 ENV OPENWRT_SDK_NAME OpenWrt-SDK-15.05.1-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64
-RUN apt-get update && apt-get install -y git make cmake gcc pkg-config build-essential libssl-dev libncurses5-dev unzip gawk wget python file openssh-server libssl-dev libffi-dev qt5-default
+RUN apt-get update && apt-get install -y git subversion make cmake gcc pkg-config build-essential libssl-dev libncurses5-dev unzip gawk wget python file openssh-server libssl-dev libffi-dev qt5-default
 RUN useradd -s /bin/bash -m -d /home/user -G ssh -puser123 user
 RUN usermod -a -G ssh user
 RUN echo 'user:user123' | chpasswd

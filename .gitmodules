@@ -1,0 +1,4 @@
+[submodule "thirdparty/openwrt-packages"]
+	path = thirdparty/openwrt-packages
+	url = https://github.com/openwrt/packages.git
+	branch = for-15.05

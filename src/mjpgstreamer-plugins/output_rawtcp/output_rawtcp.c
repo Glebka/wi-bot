@@ -40,8 +40,8 @@
 
 #include <dirent.h>
 
-#include "../../utils.h"
-#include "../../mjpg_streamer.h"
+#include <utils.h>
+#include <mjpg_streamer.h>
 
 #define OUTPUT_PLUGIN_NAME "Raw TCP output plugin"
 
