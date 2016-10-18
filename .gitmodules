@@ -2,3 +2,6 @@
 	path = thirdparty/openwrt-packages
 	url = https://github.com/openwrt/packages.git
 	branch = for-15.05
+[submodule "thirdparty/arduino-libs/Adafruit_PWMServoDriver"]
+	path = thirdparty/arduino-libs/Adafruit_PWMServoDriver
+	url = https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library.git
