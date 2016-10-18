@@ -5,3 +5,7 @@
 [submodule "thirdparty/arduino-libs/Adafruit_PWMServoDriver"]
 	path = thirdparty/arduino-libs/Adafruit_PWMServoDriver
 	url = https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library.git
+[submodule "thirdparty/arduino-libs/Timer"]
+	path = thirdparty/arduino-libs/Timer
+	url = https://github.com/JChristensen/Timer.git
+	branch = v2.1
