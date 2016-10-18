@@ -21,7 +21,7 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 include_directories(SYSTEM
-	${PROJECT_SOURCE_DIR}/thirdparty/mjpg-streamer/mjpg-streamer-experimental
+	${CMAKE_SOURCE_DIR}/thirdparty/mjpg-streamer/mjpg-streamer-experimental
 )
 
 set(sources
