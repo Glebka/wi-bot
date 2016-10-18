@@ -4,7 +4,13 @@ cmake_minimum_required(VERSION 3.1.3)
 
 project(uno-firmware C CXX)
 
-link_directories(${CMAKE_SOURCE_DIR}/thirdparty/arduino-libs)
+set(ARDUINO_LIBS_ROOT ${CMAKE_SOURCE_DIR}../../thirdparty/arduino-libs)
+
+link_directories(${ARDUINO_LIBS_ROOT})
+include_directories(SYSTEM
+	${ARDUINO_LIBS_ROOT}/Timer
+	${ARDUINO_LIBS_ROOT}/Adafruit_PWMServoDriver
+)
 
 print_board_list()
 print_programmer_list()
