@@ -4,12 +4,12 @@ cmake_minimum_required(VERSION 3.1.3)
 
 project(uno-firmware C CXX)
 
-set(ARDUINO_LIBS_ROOT ${CMAKE_SOURCE_DIR}../../thirdparty/arduino-libs)
+set(ARDUINO_EXTRA_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}../../thirdparty/arduino-libs)
 
-link_directories(${ARDUINO_LIBS_ROOT})
+link_directories(${ARDUINO_EXTRA_LIBRARIES_PATH})
 include_directories(SYSTEM
-	${ARDUINO_LIBS_ROOT}/Timer
-	${ARDUINO_LIBS_ROOT}/Adafruit_PWMServoDriver
+	${ARDUINO_EXTRA_LIBRARIES_PATH}/Timer
+	${ARDUINO_EXTRA_LIBRARIES_PATH}/Adafruit_PWMServoDriver
 )
 
 print_board_list()
