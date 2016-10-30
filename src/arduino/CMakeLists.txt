@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.1.3)
 
 project(uno-firmware C CXX)
 
-set(ARDUINO_EXTRA_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}../../thirdparty/arduino-libs)
+set(ARDUINO_EXTRA_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}/../../thirdparty/arduino-libs)
 
 link_directories(${ARDUINO_EXTRA_LIBRARIES_PATH})
 include_directories(SYSTEM
