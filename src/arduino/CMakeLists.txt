@@ -2,7 +2,7 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/../../cmake/ArduinoToolchain.cmake)
 
 cmake_minimum_required(VERSION 3.1.3)
 
-project(firmware CXX)
+project(firmware C CXX)
 
 set(ARDUINO_EXTRA_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}/../../thirdparty/arduino-libs)
 
