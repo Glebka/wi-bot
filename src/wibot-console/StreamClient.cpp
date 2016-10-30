@@ -1,8 +1,8 @@
 #include "StreamClient.hpp"
 #include <QDebug>
+#include <QtEndian>
 #include <jpeglib.h>
 #include <setjmp.h>
-#include <arpa/inet.h>
 
 struct my_error_mgr {
   struct jpeg_error_mgr pub;    /* "public" fields */
@@ -101,7 +101,7 @@ void StreamClient::onReadyRead()
             if ( bytesAvail >= 4 )
             {
                 int read = mSocketPtr->read( ( char* )&mFrameSize, 4 );
-                mFrameSize = ntohl( mFrameSize );
+                mFrameSize = qFromBigEndian( mFrameSize );
                 bytesAvail -= read;
             }
         }

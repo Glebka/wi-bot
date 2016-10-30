@@ -9,3 +9,6 @@
 	path = thirdparty/arduino-libs/Timer
 	url = https://github.com/JChristensen/Timer.git
 	branch = v2.1
+[submodule "thirdparty/libjpeg"]
+	path = thirdparty/libjpeg
+	url = https://github.com/LuaDist/libjpeg.git

@@ -10,4 +10,15 @@ if(NOT WIN32)
 	add_subdirectory(thirdparty)
 endif()
 
+if (CYGWIN)
+	set (CMAKE_PREFIX_PATH "/cygdrive/c/Qt/5.4/mingw491_32/")
+elseif(WIN32)
+	set (CMAKE_PREFIX_PATH "c:/Qt/5.4/mingw491_32/")
+endif()
+
+SET(BUILD_STATIC ON CACHE BOOL "Build static libjpeg")
+SET(BUILD_EXECUTABLES OFF CACHE BOOL "Do not build libjpeg executables")
+SET(BUILD_TESTS OFF CACHE BOOL "Do not build libjpeg tests")
+add_subdirectory(thirdparty/libjpeg)
+
 add_subdirectory(src/wibot-console)
