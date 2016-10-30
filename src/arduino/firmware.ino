@@ -30,7 +30,7 @@ struct Command
 
 Command cmd;
 
-void resetMotors( void )
+void resetMotors( void* context )
 {
   analogWrite( LEFT_MOTOR_PIN, 0 );
   analogWrite( RIGHT_MOTOR_PIN, 0 );
