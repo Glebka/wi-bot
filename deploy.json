@@ -17,6 +17,11 @@
 				"includePattern": "/wi-bot/src/mjpgstreamer-plugins/output_rawtcp/(.+so)", 
 				"uploadPattern": "plugins/$1",
 				"matrixParams": { "override": 1 }
+			},
+			{
+				"includePattern": "/wi-bot/src/arduino/(.+hex)", 
+				"uploadPattern": "arduino/$1",
+				"matrixParams": { "override": 1 }
 			}
 	],
     "publish": true
