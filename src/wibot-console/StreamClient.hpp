@@ -29,6 +29,7 @@ signals:
 
 public slots:
     void init();
+    void teardown();
 
 private slots:
     void onConnected();

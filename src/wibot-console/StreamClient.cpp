@@ -69,14 +69,21 @@ void StreamClient::init()
 
 }
 
+void StreamClient::teardown()
+{
+   mSocketPtr->disconnectFromHost();
+}
+
 void StreamClient::onConnected()
 {
-    qDebug() << "Connected...";
+    qDebug() << "Connected to robo video server on "
+             <<  mSocketPtr->peerName()
+             << ":" << mSocketPtr->peerPort();
 }
 
 void StreamClient::onDisconnected()
 {
-    qDebug() << "Disconnected...";
+    qDebug() << "Disconnected from robo video server";
 }
 
 void StreamClient::onReadyRead()
