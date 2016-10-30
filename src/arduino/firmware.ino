@@ -105,7 +105,7 @@ void loop( void )
         motorR = cmd.loParam;
         analogWrite( LEFT_MOTOR_PIN, motorL );
         analogWrite( RIGHT_MOTOR_PIN, motorR );
-        timeoutEvent = timer.after( 500, resetMotors );
+        timeoutEvent = timer.after( 500, resetMotors, NULL );
       }
     }
   }
