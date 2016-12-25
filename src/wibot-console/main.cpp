@@ -14,6 +14,7 @@
 #include <QCommandLineParser>
 #include <QJsonDocument>
 #include <QDebug>
+#include <QMessageBox>
 #include "StreamClient.hpp"
 #include "CameraItem.hpp"
 #include "CommunicationController.hpp"
