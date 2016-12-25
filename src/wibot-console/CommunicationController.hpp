@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QJsonObject>
 #include <stdint.h>
 
 const quint8 CMD_SERVO_CONTROL = 0xFA;
@@ -20,11 +21,13 @@ class CommunicationController : public QObject
    Q_OBJECT
 public:
    explicit CommunicationController(QObject *parent = 0);
+   explicit CommunicationController( const QJsonObject& config );
    ~CommunicationController();   
 
 public slots:
 
-   void connectToHost( const QString& host, quint16 port );
+   bool connectToHost( const QString& host, quint16 port );
+   bool connectToHost();
    void disconnectFromHost();
 
    void changeCameraPosition(quint16 rotX, quint16 rotZ );
@@ -35,7 +38,12 @@ private slots:
    void onDataArrived();
 
 private:
+   void connectSignals();
+
+private:
    QTcpSocket mSocket;
+   QString mHost;
+   quint16 mPort;
 };
 
 #endif // COMMUNICATIONCONTROLLER_HPP

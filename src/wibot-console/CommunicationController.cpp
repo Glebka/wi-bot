@@ -1,11 +1,20 @@
 #include <QDebug>
 #include "CommunicationController.hpp"
 
-CommunicationController::CommunicationController(QObject *parent) : QObject(parent)
+CommunicationController::CommunicationController( QObject *parent )
+    : QObject( parent )
+    , mHost()
+    , mPort( 0 )
 {
-   connect( &mSocket, &QTcpSocket::connected, this, &CommunicationController::onConnected );
-   connect( &mSocket, &QTcpSocket::disconnected, this, &CommunicationController::onDisconnected );
-   connect( &mSocket, &QTcpSocket::readyRead, this, &CommunicationController::onDataArrived );
+    connectSignals();
+}
+
+CommunicationController::CommunicationController( const QJsonObject &config )
+    : QObject( NULL )
+    , mHost( config["host"].toString() )
+    , mPort( config["controlPort"].toInt() )
+{
+
 }
 
 CommunicationController::~CommunicationController()
@@ -13,10 +22,15 @@ CommunicationController::~CommunicationController()
    disconnectFromHost();
 }
 
-void CommunicationController::connectToHost(const QString& host, quint16 port)
+bool CommunicationController::connectToHost(const QString& host, quint16 port)
 {
    mSocket.connectToHost( host, port );
-   mSocket.waitForConnected();
+   return mSocket.waitForConnected();
+}
+
+bool CommunicationController::connectToHost()
+{
+    return connectToHost( mHost, mPort );
 }
 
 void CommunicationController::disconnectFromHost()
@@ -64,5 +78,12 @@ void CommunicationController::onDisconnected()
 void CommunicationController::onDataArrived()
 {
 
+}
+
+void CommunicationController::connectSignals()
+{
+    connect( &mSocket, &QTcpSocket::connected, this, &CommunicationController::onConnected );
+    connect( &mSocket, &QTcpSocket::disconnected, this, &CommunicationController::onDisconnected );
+    connect( &mSocket, &QTcpSocket::readyRead, this, &CommunicationController::onDataArrived );
 }
 
