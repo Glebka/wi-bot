@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QDebug>
 #include <QMessageBox>
+#include "BotDiscovery.hpp"
 #include "StreamClient.hpp"
 #include "CameraItem.hpp"
 #include "CommunicationController.hpp"
@@ -25,6 +26,7 @@
 const char* APP_VERSION = "0.1";
 const char* DEFAULT_VIDEO_STREAM_PORT = "778";
 const char* DEFAULT_COMMAND_STREAM = "777";
+const char* DEFAULT_DISCOVERY_PORT = "779";
 const char* CONFIG_FILE_NAME = "config.json";
 
 /**
@@ -80,6 +82,17 @@ bool loadConfig( const QCommandLineParser& parser, QJsonObject& configuration )
     foreach ( QString optionName, parser.optionNames() ) {
         configuration[ optionName ] = parser.value( optionName );
     }
+
+    if ( !configuration.contains( "host" ) )
+    {
+        QString host;
+        BotDiscovery discovery( configuration );
+        if ( discovery.findWiBot( host ) )
+        {
+            configuration["host"] = host;
+        }
+    }
+
     result = configuration.contains( "host" )
             && configuration.contains( "camPort" )
             && configuration.contains( "controlPort" );
