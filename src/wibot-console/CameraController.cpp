@@ -3,7 +3,8 @@
 #include "CameraController.hpp"
 
 CameraController::CameraController(QObject* parent)
-   : mSensitivity( 50 )
+   : QObject( parent )
+   , mSensitivity( 50 )
    , mPwmX( MIN_SERVO + ( MAX_SERVO - MIN_SERVO ) / 2 )
    , mPwmZ( MIN_SERVO + ( MAX_SERVO - MIN_SERVO ) / 2 )
    , mPrevX( -1 )
