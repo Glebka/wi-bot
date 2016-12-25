@@ -26,11 +26,20 @@ static void my_error_exit (j_common_ptr cinfo)
 }
 
 StreamClient::StreamClient(const QString &host, quint16 port, QObject *parent)
-    : QObject( 0 )
+    : QObject( parent )
     , mHost( host )
     , mPort( port )
     , mFrameSize( 0 )
 
+{
+
+}
+
+StreamClient::StreamClient( const QJsonObject &config )
+    : QObject( NULL )
+    , mHost( config["host"].toString() )
+    , mPort( config["camPort"].toInt() )
+    , mFrameSize( 0 )
 {
 
 }
@@ -63,6 +72,8 @@ void StreamClient::init()
     connect( sock, &QTcpSocket::connected, this, &StreamClient::onConnected );
     connect( sock, &QTcpSocket::disconnected, this, &StreamClient::onDisconnected );
     connect( sock, &QTcpSocket::readyRead, this, &StreamClient::onReadyRead );
+    typedef void (QAbstractSocket::*QAbstractSocketErrorSignal)(QAbstractSocket::SocketError);
+    connect( sock, static_cast<QAbstractSocketErrorSignal>(&QAbstractSocket::error), this, &StreamClient::onConnectionError );
     connect( this, &StreamClient::decompress, this, &StreamClient::onDecompress );
 
     mSocketPtr->connectToHost( mHost, mPort );
@@ -153,4 +164,9 @@ void StreamClient::onDecompress(QByteArray frameBuffer)
     }
     jpeg_finish_decompress(&cinfo);
 
+}
+
+void StreamClient::onConnectionError(QAbstractSocket::SocketError socketError)
+{
+    emit error( mSocketPtr->errorString() );
 }

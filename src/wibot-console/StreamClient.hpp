@@ -9,6 +9,7 @@
 #include <QMutexLocker>
 #include <QSharedPointer>
 #include <QImage>
+#include <QJsonObject>
 
 class StreamClient : public QObject
 {
@@ -19,6 +20,7 @@ class StreamClient : public QObject
 
 public:
     StreamClient( const QString& host, quint16 port, QObject* parent );
+    explicit StreamClient( const QJsonObject& config );
     ~StreamClient();
 
     QImage getFrame();
@@ -26,6 +28,7 @@ public:
 
 signals:
     void decompress( QByteArray frameBuffer );
+    void error( const QString& errorMessage );
 
 public slots:
     void init();
@@ -36,6 +39,7 @@ private slots:
     void onDisconnected();
     void onReadyRead();
     void onDecompress( QByteArray frameBuffer );
+    void onConnectionError( QAbstractSocket::SocketError socketError );
 
 private:
 
