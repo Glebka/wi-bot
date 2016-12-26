@@ -36,7 +36,7 @@ if (WIN32)
 		${sources}
 		${QRC}
 	)
-elseif(CYGWIN)
+else()
 	add_executable(wibot_console 
 		${headers}
 		${sources}
