@@ -62,6 +62,7 @@ Find sources here: ``src/wibot-console/``
 ## How to build
  
 On Linux:
+
 1. Install dependencies:
 
         # apt-get update -qq 
