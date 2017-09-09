@@ -14,4 +14,6 @@ print_programmer_list()
 GENERATE_ARDUINO_FIRMWARE(firmware
     SKETCH "firmware.ino"
     PORT  /dev/ttyACM0
-    BOARD uno)
+    BOARD promini)
+
+# avrdude -Cavrdude.conf -v -patmega328p -carduino -PCOM4 -b57600 -D -Uflash:w:firmware.hex:i
