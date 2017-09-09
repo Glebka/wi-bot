@@ -9,3 +9,6 @@
 [submodule "thirdparty/libjpeg"]
 	path = thirdparty/libjpeg
 	url = https://github.com/LuaDist/libjpeg.git
+[submodule "thirdparty/arduino-libs/Servo"]
+	path = thirdparty/arduino-libs/Servo
+	url = https://github.com/Glebka/Servo.git
