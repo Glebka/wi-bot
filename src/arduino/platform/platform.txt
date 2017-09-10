@@ -1,0 +1,2 @@
+name=WiBot Arduino Pro Mini 5v 16 MHz
+version=0.1

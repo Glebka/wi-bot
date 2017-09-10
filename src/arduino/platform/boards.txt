@@ -1,0 +1,22 @@
+##############################################################
+
+promini.name=Arduino Pro Mini 5V 16 MHz
+promini.upload.tool=avrdude
+promini.upload.protocol=arduino
+promini.bootloader.tool=avrdude
+promini.bootloader.unlock_bits=0x3F
+promini.bootloader.lock_bits=0x0F
+promini.build.board=AVR_PRO
+promini.build.core=arduino
+promini.build.variant=eightanaloginputs
+promini.upload.maximum_size=30720
+promini.upload.maximum_data_size=2048
+promini.upload.speed=115200
+promini.bootloader.low_fuses=0xFF
+promini.bootloader.high_fuses=0xDA
+promini.bootloader.extended_fuses=0xFD
+promini.bootloader.file=optiboot/optiboot_atmega328.hex
+promini.build.mcu=atmega328p
+promini.build.f_cpu=16000000L
+
+##############################################################
