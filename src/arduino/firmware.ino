@@ -63,7 +63,7 @@ void loop(void)
 {   
   if (Serial.available() > 0)
   {
-    if (Serial.readBytes((uint8_t*) &cmd, sizeof(Command)) == 0)
+    if (Serial.readBytes((char*) &cmd, sizeof(Command)) == 0)
     {
       timer.oscillate(INDICATOR_PIN, 50, LOW, 2);
       goto upd;
