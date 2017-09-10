@@ -9,18 +9,18 @@
     },
     "files": [
 			{
-				"includePattern": "/wi-bot/dist/(HU)", 
-				"uploadPattern": "$1",
+				"includePattern": "/wi-bot/dist/HU/(.*)", 
+				"uploadPattern": "HU/$1",
 				"matrixParams": { "override": 1 }
 			},
 			{
-				"includePattern": "/wi-bot/dist/(PC)", 
-				"uploadPattern": "$1",
+				"includePattern": "/wi-bot/dist/PC/(.*)", 
+				"uploadPattern": "PC/$1",
 				"matrixParams": { "override": 1 }
 			},
 			{
-				"includePattern": "/wi-bot/dist/(ARDU)", 
-				"uploadPattern": "$1",
+				"includePattern": "/wi-bot/dist/ARDU/(.*)", 
+				"uploadPattern": "ARDU/$1",
 				"matrixParams": { "override": 1 }
 			}
 	],
