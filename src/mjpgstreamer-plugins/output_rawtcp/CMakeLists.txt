@@ -40,8 +40,6 @@ add_library(output_rawtcp SHARED
 	${sources}
 )
 
-add_dependencies(output_rawtcp mjpg-streamer)
-
 target_link_libraries(output_rawtcp
 	pthread
 	dl
