@@ -40,7 +40,7 @@ void resetMotors(void *context)
  */
 void sendHeartBeat(void *context) 
 {  
-  Serial.write((char *)&HEARTBEAT_CMD, sizeof(Command));  
+  Serial.write((const uint8_t*) &HEARTBEAT_CMD, sizeof(Command));  
 }
 
 /**
@@ -63,7 +63,7 @@ void loop(void)
 {   
   if (Serial.available() > 0)
   {
-    if (Serial.readBytes((char *)&cmd, sizeof(Command)) == 0)
+    if (Serial.readBytes((uint8_t*) &cmd, sizeof(Command)) == 0)
     {
       timer.oscillate(INDICATOR_PIN, 50, LOW, 2);
       goto upd;
