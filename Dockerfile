@@ -3,7 +3,7 @@ ENV OPENWRT_SDK_NAME OpenWrt-SDK-15.05.1-ar71xx-generic_gcc-4.8-linaro_uClibc-0.
 ENV IMAGE_BUILDER_NAME OpenWrt-ImageBuilder-15.05.1-ar71xx-generic.Linux-x86_64
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends git subversion make cmake gcc pkg-config build-essential libssl-dev libncurses5-dev unzip gawk wget python file && \
-	apt-get install -y openssh-server libssl-dev libffi-dev qt5-default qtdeclarative5-dev qtdeclarative5-dev-tools && \
+	apt-get install -y openssh-server libssl-dev libffi-dev qt5-default qtdeclarative5-dev qtdeclarative5-dev-tools libqt5serialport5-dev && \
 	apt-get install -y arduino arduino-core gcc-avr binutils-avr avr-libc avrdude npm && \
 	apt-get clean autoclean && \
 	apt-get autoremove -y && \
