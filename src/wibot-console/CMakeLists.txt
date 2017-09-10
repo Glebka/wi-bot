@@ -1,3 +1,11 @@
+#*************************************************************************
+# WiBot Project
+#*************************************************************************
+# @file    CMakeLists.txt
+# @date
+# @author  Hlieb Romanov
+# @brief   WiBot Console application build configuration
+#***********************************************************************/
 cmake_minimum_required(VERSION 3.1.3)
 
 project(wibot_console)
@@ -22,11 +30,9 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Quick REQUIRED)
+find_package(JPEG REQUIRED)
 
-include_directories(SYSTEM
-    ${CMAKE_SOURCE_DIR}/thirdparty/libjpeg
-    ${CMAKE_BINARY_DIR}/thirdparty/libjpeg
-)
+include_directories(${JPEG_INCLUDE_DIR} SYSTEM)
 
 qt5_add_resources(QRC ${resources})
 
@@ -45,4 +51,10 @@ else()
 endif()
 
 qt5_use_modules(wibot_console Core Widgets Quick)
-target_link_libraries(wibot_console jpeg)
+
+target_link_libraries(wibot_console ${JPEG_LIBRARIES})
+
+install(TARGETS wibot_console
+	RUNTIME DESTINATION usr/bin	
+)
+

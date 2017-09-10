@@ -5,22 +5,22 @@
         "subject": "glebka"
     },
     "version": {
-        "name": "0.0.1"
+        "name": "1.0.0"
     },
     "files": [
 			{
-				"includePattern": "/wi-bot/src/cmd-server/(cmd-server)", 
-				"uploadPattern": "$1/$1",
+				"includePattern": "/wi-bot/dist/(HU)", 
+				"uploadPattern": "$1",
 				"matrixParams": { "override": 1 }
 			},
 			{
-				"includePattern": "/wi-bot/src/mjpgstreamer-plugins/output_rawtcp/(.+so)", 
-				"uploadPattern": "plugins/$1",
+				"includePattern": "/wi-bot/dist/(PC)", 
+				"uploadPattern": "$1",
 				"matrixParams": { "override": 1 }
 			},
 			{
-				"includePattern": "/wi-bot/src/arduino/(.+hex)", 
-				"uploadPattern": "arduino/$1",
+				"includePattern": "/wi-bot/dist/(ARDU)", 
+				"uploadPattern": "$1",
 				"matrixParams": { "override": 1 }
 			}
 	],

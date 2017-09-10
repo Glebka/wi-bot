@@ -1,3 +1,11 @@
+#*************************************************************************
+# WiBot Project
+#*************************************************************************
+# @file    CMakeLists.txt
+# @date
+# @author  Hlieb Romanov
+# @brief   Build configuration for the raw tcp output mjpgstreamer plugin
+#***********************************************************************/
 cmake_minimum_required(VERSION 3.1.3)
 
 project(output_rawtcp)
@@ -21,7 +29,7 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 include_directories(SYSTEM
-	${CMAKE_SOURCE_DIR}/thirdparty/mjpg-streamer/mjpg-streamer-experimental
+	${THIRDPARTY_DIR}/mjpg-streamer/mjpg-streamer-experimental
 )
 
 set(sources
@@ -37,4 +45,9 @@ add_dependencies(output_rawtcp mjpg-streamer)
 target_link_libraries(output_rawtcp
 	pthread
 	dl
+)
+
+install(TARGETS output_rawtcp
+	LIBRARY DESTINATION usr/lib
+	ARCHIVE DESTINATION usr/lib/static
 )

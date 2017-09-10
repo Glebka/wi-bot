@@ -1,3 +1,11 @@
+#*************************************************************************
+# WiBot Project
+#*************************************************************************
+# @file    CMakeLists.txt
+# @date
+# @author  Hlieb Romanov
+# @brief   Build configuration for Command Server on HU
+#***********************************************************************/
 cmake_minimum_required(VERSION 3.1.3)
 
 project(cmd-server)
@@ -21,3 +29,7 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 add_executable(cmd-server server.c)
+
+install(TARGETS cmd-server
+    RUNTIME DESTINATION urs/bin
+)
