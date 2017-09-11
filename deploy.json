@@ -1,11 +1,11 @@
 {
     "package": {
-        "name": "auto-upload",
+        "name": "binaries",
         "repo": "Wi-Bot",
         "subject": "glebka"
     },
     "version": {
-        "name": "1.0.0"
+        "name": "0.0.1"
     },
     "files": [
 			{

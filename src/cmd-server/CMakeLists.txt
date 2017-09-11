@@ -31,5 +31,5 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 add_executable(cmd-server server.c)
 
 install(TARGETS cmd-server
-    RUNTIME DESTINATION urs/bin
+    RUNTIME DESTINATION usr/bin
 )
