@@ -11,14 +11,13 @@ before_install:
   - docker pull glebka/ar71xx-buildenv
 
 script:
-  - docker run -v /wi-bot:/wi-bot --rm -t -i glebka/ar71xx-buildenv 
-    /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; 
+  - docker run -v /wi-bot:/wi-bot --rm -t -i glebka/ar71xx-buildenv /bin/sh -c "git clone --recursive https://github.com/Glebka/wi-bot.git; 
     cd /wi-bot; 
     cmake . && make;
     cd /opt/$IMAGE_BUILDER_NAME;
-    make image PROFILE=TLMR3020 PACKAGES="-ppp -ppp-mod-pppoe -luci -lua -firewall -ip6tables -kmod-ip6tables -kmod-ipv6 -odhcp6c
-    kmod-video-core kmod-video-uvc mjpg-streamer";
-    ls -aR bin
+    make image PROFILE=TLMR3020 PACKAGES='-ppp -ppp-mod-pppoe -luci -lua -firewall -ip6tables -kmod-ip6tables -kmod-ipv6 -odhcp6c
+    kmod-video-core kmod-video-uvc mjpg-streamer';
+    ls -aR bin"
 
 deploy:
   provider: bintray
