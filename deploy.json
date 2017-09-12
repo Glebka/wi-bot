@@ -12,12 +12,7 @@
 				"includePattern": "/wi-bot/dist/HU/(.*)", 
 				"uploadPattern": "HU/$1",
 				"matrixParams": { "override": 1 }
-			},
-			{
-				"includePattern": "/opt/OpenWrt-ImageBuilder-15.05.1-ar71xx-generic.Linux-x86_64/bin/(.*)", 
-				"uploadPattern": "HU/$1",
-				"matrixParams": { "override": 1 }
-			},
+			},			
 			{
 				"includePattern": "/wi-bot/dist/PC/(.*)", 
 				"uploadPattern": "PC/$1",

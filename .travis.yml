@@ -17,7 +17,8 @@ script:
     cd /opt/$IMAGE_BUILDER_NAME;
     make image PROFILE=TLMR3020 PACKAGES='-ppp -ppp-mod-pppoe -luci -lua -firewall -ip6tables -kmod-ip6tables -kmod-ipv6 -odhcp6c
     kmod-video-core kmod-video-uvc mjpg-streamer';
-    ls -aR bin"
+    ls -aR bin;
+    cp -r ./bin /wi-bot/dist/HU"
 
 deploy:
   provider: bintray
