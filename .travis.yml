@@ -2,9 +2,10 @@ sudo: required
 language: cpp
 services:
   - docker
+
 env:
-  - OPENWRT_SDK_NAME=OpenWrt-SDK-15.05.1-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64
-  - IMAGE_BUILDER_NAME=OpenWrt-ImageBuilder-15.05.1-ar71xx-generic.Linux-x86_64  
+  - OPENWRT_SDK_NAME=OpenWrt-SDK-15.05.1-ar71xx-generic_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64 IMAGE_BUILDER_NAME=OpenWrt-ImageBuilder-15.05.1-ar71xx-generic.Linux-x86_64
+
 before_install:
   - sudo mkdir /wi-bot
   - docker pull glebka/ar71xx-buildenv
