@@ -1,4 +1,4 @@
-# Wi-Bot [![Build Status](https://travis-ci.org/Glebka/wi-bot.svg?branch=master)](https://travis-ci.org/Glebka/wi-bot)
+# Wi-Bot [![Build Status](https://travis-ci.org/Glebka/wi-bot.svg?branch=master)](https://travis-ci.org/Glebka/wi-bot) [![Bintray](https://api.bintray.com/packages/glebka/Wi-Bot/binaries/images/download.svg)](https://bintray.com/glebka/Wi-Bot/binaries/_latestVersion)
 
 Wi-Bot is a robotic platform powered by TP-LINK TL MR3020 wireless router with OpenWRT installed on it and 
 Arduino board for communicating with peripheral devices.
